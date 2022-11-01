@@ -9,7 +9,7 @@ public class FindElementAtSomePositionMatrix {
     int total = 0;
     for (int i = 0; i < m; i++) {
       int low = 0, high = n - 1;
-      int count = 0;
+      int count = -1;
       while (low <= high) {
         int mid = (low + high) / 2;
         if (arr[i][mid] > k && (mid == 0 || arr[i][mid - 1] <= k)) {
@@ -22,7 +22,7 @@ public class FindElementAtSomePositionMatrix {
           low = mid + 1;
         }
       }
-      total += count == 0 ? n : count;
+      total += count == -1 ? n : count;
     }
     return total;
   }
@@ -31,7 +31,7 @@ public class FindElementAtSomePositionMatrix {
     BufferedReader br = new BufferedReader(new InputStreamReader(System.in));
     int m, n, k;
     m = Integer.parseInt(br.readLine().strip());
-    n = Integer.parseInt(br.readLine().strip());
+    n = m;
 
     int[][] arr = new int[m][n];
     int low = Integer.MAX_VALUE, high = Integer.MIN_VALUE;
